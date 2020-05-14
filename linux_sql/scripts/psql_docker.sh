@@ -42,10 +42,4 @@ if [ "$1" == "stop" ];then
   exit $?
 fi
 
-#error to check if command exists
-if [ "$1" != "create" || "$1" != "start" || "$1" != "stop" ];then
-  echo "invalid command"
-  exit 1
-fi
-
 exit 0
