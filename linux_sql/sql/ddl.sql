@@ -1,4 +1,8 @@
-\c host_agent CREATE TABLE IF NOT EXISTS PUBLIC.host_info (
+--connect to host_agent database
+\c host_agent
+
+--Create host_info table and insert a default row
+CREATE TABLE IF NOT EXISTS PUBLIC.host_info (
   id SERIAL NOT NULL PRIMARY KEY,
   hostname VARCHAR NOT NULL UNIQUE,
   cpu_number SMALLINT NOT NULL,
@@ -20,15 +24,16 @@ VALUES
     1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz',
     2300.000, 256, 601324, '2019-05-29 17:49:53'
   );
+
+--Create host_usage table and insert a default row
 CREATE TABLE IF NOT EXISTS PUBLIC.host_usage (
   "timestamp" TIMESTAMP NOT NULL,
-  host_id SERIAL NOT NULL,
+  host_id INTEGER NOT NULL,
   memory_free INTEGER NOT NULL,
   cpu_idle SMALLINT NOT NULL,
   cpu_kernel SMALLINT NOT NULL,
   disk_io SMALLINT NOT NULL,
   disk_available INTEGER NOT NULL,
-  PRIMARY KEY (host_id),
   FOREIGN KEY (host_id) REFERENCES host_info(id)
 );
 INSERT INTO host_usage (
