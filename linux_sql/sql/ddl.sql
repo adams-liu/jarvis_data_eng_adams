@@ -20,7 +20,7 @@ INSERT INTO host_info (
 )
 VALUES
   (
-    DEFAULT, 'spry-framework-236416.internal',
+    DEFAULT, 'jrvs-remote-desktop-centos7-6.us-central1-a.c.spry-framework-236416.internal',
     1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz',
     2300.000, 256, 601324, '2019-05-29 17:49:53'
   );
