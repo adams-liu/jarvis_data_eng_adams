@@ -9,7 +9,8 @@ The Linux Cluster Monitoring Agent is a tool that allows IT admins to retrieve h
 This tool is only an MVP and gives a high-level representation of how a real enterprise monitoring agent would work. 
 
 ## Architecture and Design
-![Image of agent architecture](/assets/architecture.png) 
+![Image of agent architecture](./assets/architecture.png) 
+
 The architecture diagram above shows how the tool retrieves system hardware information. Each Linux server will contain two bash scripts `host_info` and `host_usage`, these scripts will be executed and sent to the database. The server local to the database will send the information directly, whereas the other servers will be sent via the network switch.
 
 ### Database and Tables
@@ -92,4 +93,4 @@ By using the crontab tool, we can schedule the `host_usage.sh` script to automat
 
 2. For the `host_usage` table, there isn't a limit set for many rows are inserted into the table; this may lead to load capacity errors in the future. An improvement would be to create an automatic script that can delete old records past a certain timeframe. (e.g. 2 weeks, 1 month)
 
-3. A docker container **needs** to be started every single time (using `psql_docker.sh`) in order for the monitoring agent to operate. This can be cumbersome, so creating a script that automatically starts the container when the server booted-up would be useful.
+3. A Docker container **needs** to be started every single time (using `psql_docker.sh`) in order for the monitoring agent to operate. This can be cumbersome, so creating a script that automatically starts the container when the server booted-up would be useful.
